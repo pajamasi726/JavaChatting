@@ -8,7 +8,7 @@ import Resource.AppConfig;
 
 public class ServerService {
 	
-	private static ServerService programService;
+	private static ServerService serverService;
 	
 	private ResourceService resourceService;
 	
@@ -73,10 +73,10 @@ public class ServerService {
 	
 	public static ServerService getInstance(){
 		
-		if(programService == null){
-			programService = new ServerService();
+		if(serverService == null){
+			serverService = new ServerService();
 		}
 		
-		return programService;
+		return serverService;
 	}
 }
