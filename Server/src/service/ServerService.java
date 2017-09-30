@@ -1,10 +1,10 @@
-package Service;
+package service;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import Resource.AppConfig;
+import resource.AppConfig;
 
 public class ServerService {
 	

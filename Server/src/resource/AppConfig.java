@@ -1,4 +1,4 @@
-package Resource;
+package resource;
 
 public class AppConfig {
 	

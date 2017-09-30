@@ -1,11 +1,11 @@
-package Resource;
+package resource;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import Listener.ButtonEventListener;
+import listner.ButtonEventListener;
 
 public class MainFrameComponent extends JFrame{
 

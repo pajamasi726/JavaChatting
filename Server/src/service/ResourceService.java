@@ -1,6 +1,6 @@
-package Service;
+package service;
 
-import Resource.MainFrameComponent;
+import resource.MainFrameComponent;
 
 /**
  * @author Administrator

@@ -1,6 +1,6 @@
-package Service;
+package service;
 
-import Resource.LoginFrameComponent;
+import resource.LoginFrameComponent;
 
 public class ResourceService {
 	

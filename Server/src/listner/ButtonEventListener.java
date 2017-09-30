@@ -1,10 +1,10 @@
-package Listener;
+package listner;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Service.ServerService;
-import Service.ResourceService;
+import service.ResourceService;
+import service.ServerService;
 
 public class ButtonEventListener implements ActionListener{
 
