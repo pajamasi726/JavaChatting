@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import customInterface.NetworkServerClientMsgListener;
+import model.Client;
 import resource.AppConfig;
 
 public class ServerService {
@@ -15,11 +17,12 @@ public class ServerService {
 	private ServerSocket serverSocket;
 	private Thread serverThread;
 	
-	/** GUI 셋팅 */
-	public void startProgram(){
-		resourceService.init();
-		resourceService.mainFrameShow();
+	private NetworkServerClientMsgListener networkServerClientMsgListener;
+	
+	public void setNetworkServerClientMsgListener(NetworkServerClientMsgListener networkServerClientMsgListener){
+		this.networkServerClientMsgListener = networkServerClientMsgListener;
 	}
+	
 	
 	/** 서버 시작 */
 	public void startServer(){
@@ -38,7 +41,7 @@ public class ServerService {
 						Socket socket = serverSocket.accept();
 						resourceService.mainFrameAddText("사용자 접속 IP : "+socket.getInetAddress());
 						
-						
+						new Client(socket,networkServerClientMsgListener);
 					}
 					
 					
