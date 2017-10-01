@@ -6,6 +6,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import listener.ButtonEventListener;
+
 public class LoginFrameComponent extends JFrame{
 	
 	private JTextField textField;
@@ -32,6 +34,7 @@ public class LoginFrameComponent extends JFrame{
 		
 		loginBtn = new JButton("접속");
 		loginBtn.setBounds(12, 126, 138, 23);
+		loginBtn.addActionListener(new ButtonEventListener());
 		this.add(loginBtn);
 		
 		errorLabel = new JLabel("");
