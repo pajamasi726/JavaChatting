@@ -19,6 +19,9 @@ public class ProgramService implements NetworkInMsgListener{
 		resourceService.init();
 		resourceService.loginFrameShow();
 		
+		// 서버에 접속
+		serverService.connectServer();
+		
 		// 서버에 리스너 설정
 		serverService.setNetworkInMsgListener(this);
 		

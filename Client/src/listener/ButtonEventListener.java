@@ -24,7 +24,10 @@ public class ButtonEventListener implements ActionListener{
 		switch(command){
 		
 			case "접속":
-				serverService.connectServer();
+				// id 받아오기
+				String nickName = resourceService.getNickName();
+				nickName = nickName.replaceAll(" ", "").trim();
+				serverService.sendMsg(nickName);
 			break;
 		}
 	}

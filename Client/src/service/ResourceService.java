@@ -17,6 +17,9 @@ public class ResourceService {
 		loginFrameComponent.setVisible(true);
 	}
 
+	public String getNickName(){
+		return loginFrameComponent.getTextField().getText();
+	}
 	
 	
 	

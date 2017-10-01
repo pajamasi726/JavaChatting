@@ -46,7 +46,33 @@ public class LoginFrameComponent extends JFrame{
 	public void setErrorText(String str){
 		errorLabel.setText(str);
 	}
+
 	
+	
+	
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JLabel getErrorLabel() {
+		return errorLabel;
+	}
+
+	public void setErrorLabel(JLabel errorLabel) {
+		this.errorLabel = errorLabel;
+	}
+
+	public JButton getLoginBtn() {
+		return loginBtn;
+	}
+
+	public void setLoginBtn(JButton loginBtn) {
+		this.loginBtn = loginBtn;
+	}
 	
 	
 
