@@ -57,8 +57,8 @@ public class ServerService {
 	public void closeServer(){
 		
 		try {
-			serverThread.interrupt();
 			serverSocket.close();
+			serverThread.interrupt();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

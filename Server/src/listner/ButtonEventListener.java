@@ -9,11 +9,11 @@ import service.ServerService;
 public class ButtonEventListener implements ActionListener{
 
 	private ResourceService resourceService;
-	private ServerService programService;
+	private ServerService serverService;
 	
 	{
 		resourceService = ResourceService.getInstance();
-		programService = ServerService.getInstance();
+		serverService = ServerService.getInstance();
 	}
 	
 	@Override
@@ -24,11 +24,11 @@ public class ButtonEventListener implements ActionListener{
 		switch(command){
 		
 			case "서버 시작":
-				programService.startServer();
+				serverService.startServer();
 			break;
 			
 			case "서버 종료":
-				programService.closeServer();
+				serverService.closeServer();
 			break;
 		}
 	}
