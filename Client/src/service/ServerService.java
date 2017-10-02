@@ -68,6 +68,7 @@ public class ServerService {
 	
 	
 	public void sendMsg(String msg){
+		System.out.println("서버로 보내는 메세지 : "+msg);
 		
 		if(msg != null && msg.length() > 0){
 			try {

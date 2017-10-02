@@ -3,6 +3,8 @@ package listener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Util.MsgUtil;
+import protocol.Protocol;
 import service.ResourceService;
 import service.ServerService;
 
@@ -27,7 +29,8 @@ public class ButtonEventListener implements ActionListener{
 				// id 받아오기
 				String nickName = resourceService.getNickName();
 				nickName = nickName.replaceAll(" ", "").trim();
-				serverService.sendMsg(nickName);
+				String msg = MsgUtil.getProtocolEncoding(Protocol.NICK_NAME, nickName);
+				serverService.sendMsg(msg);
 			break;
 		}
 	}

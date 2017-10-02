@@ -1,5 +1,8 @@
 package resource;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -46,6 +49,9 @@ public class MainFrameComponent extends JFrame{
 		ButtonEventListener buttonEventListener = new ButtonEventListener();
 		startBtn.addActionListener(buttonEventListener);
 		endBtn.addActionListener(buttonEventListener);
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation((int)dim.getWidth()/2 - this.getWidth()/2, (int)dim.getHeight()/2 - this.getHeight()/2);
 	}
 	
 	
