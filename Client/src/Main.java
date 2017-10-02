@@ -6,7 +6,5 @@ public class Main {
 		System.out.println("Client main init");
 		
 		new ProgramController();
-		
 	}
-
 }

@@ -34,10 +34,8 @@ public class ServerService {
 				
 				try {
 					serverSocket = new ServerSocket(AppConfig.PORT);
-					
+					resourceService.mainFrameAddText("서버 시작 PORT : "+AppConfig.PORT);
 					while(true){
-						
-						resourceService.mainFrameAddText("서버 시작 PORT : "+AppConfig.PORT);
 						Socket socket = serverSocket.accept();
 						resourceService.mainFrameAddText("사용자 접속 IP : "+socket.getInetAddress());
 						

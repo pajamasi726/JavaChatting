@@ -1,6 +1,7 @@
 package resource;
 
 import java.awt.Point;
+import java.util.StringTokenizer;
 import java.util.Vector;
 
 import javax.swing.JFrame;
@@ -41,6 +42,17 @@ public class UserListFrameComponent extends JFrame{
 	
 	public void addUser(String nickName){
 		userList.add(nickName);
+		reload();
+	}
+	
+	public void addUserList(String userList){
+		
+		StringTokenizer st = new StringTokenizer(userList, ":");
+		
+		while(st.hasMoreTokens()){
+			this.userList.add(st.nextToken());
+		}
+		
 		reload();
 	}
 	

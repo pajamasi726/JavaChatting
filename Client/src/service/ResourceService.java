@@ -44,6 +44,10 @@ public class ResourceService {
 		userListFrameComponent.addUser(nickName);
 	}
 	
+	public void addUserList(String userList){
+		userListFrameComponent.addUserList(userList);
+	}
+	
 	public void removeUser(String nickName){
 		userListFrameComponent.removeUser(nickName);
 	}

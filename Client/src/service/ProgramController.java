@@ -50,6 +50,15 @@ public class ProgramController implements NetworkInMsgListener{
 				resourceService.loginFrameHide();
 			break;
 			
+			case NEW_USER :	// 새로운 사용자가 접속했을때
+				resourceService.addUser(protocolMsg.getMsg());
+			break;
+			
+			case USER_LIST :	// 사용자 리스트
+				resourceService.addUserList(protocolMsg.getMsg());
+			break;
+			
+			
 			case NOTE :	// 쪽지가 도착 했을때
 				String from = protocolMsg.getSubCode();
 				JOptionPane.showMessageDialog(null, protocolMsg.getMsg(), from+"로부터 온 쪽지", JOptionPane.PLAIN_MESSAGE);
