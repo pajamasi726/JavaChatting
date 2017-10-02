@@ -4,7 +4,8 @@ public enum Protocol {
 	
 	NICK_NAME("닉네임"),
 	ERROR("에러"),
-	SUCCESS("성공")
+	SUCCESS("성공"),
+	NOTE("쪽지"),
 	;
 	
 	

@@ -1,5 +1,6 @@
 package resource;
 
+import java.awt.Point;
 import java.util.Vector;
 
 import javax.swing.JFrame;
@@ -7,6 +8,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+
+import listener.ListEventListener;
 
 public class UserListFrameComponent extends JFrame{
 	
@@ -30,6 +33,7 @@ public class UserListFrameComponent extends JFrame{
 		jlist = new JList();
 		jlist.setListData(userList);
 		scrollPane.setViewportView(jlist);
+		jlist.addMouseListener(new ListEventListener());
 		
 	}
 	
@@ -50,6 +54,11 @@ public class UserListFrameComponent extends JFrame{
 		}
 		
 		reload();
+	}
+	
+	public String getIndex(Point point){
+		return userList.get(jlist.locationToIndex(point));
+		
 	}
 	
 	public void reload(){

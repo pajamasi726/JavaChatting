@@ -34,9 +34,8 @@ public class ProgramController implements NetworkServerClientMsgListener{
 
 	@Override
 	public void clientMsg(Client client, String clientMsg) {
-		System.out.println("Client : "+client.getNickName()+ " 으로 부터 들어온 메세지 : "+clientMsg);
-
 		ProtocolMsg protocolMsg = MsgUtil.getProtocolDecoding(clientMsg);
+		System.out.println("Client : "+client.getNickName()+ " 으로 부터 들어온 메세지 : "+protocolMsg);
 
 		switch(protocolMsg.getProcotol()){
 			

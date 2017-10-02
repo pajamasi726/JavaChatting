@@ -1,5 +1,7 @@
 package service;
 
+import java.awt.Point;
+
 import resource.LoginFrameComponent;
 import resource.UserListFrameComponent;
 
@@ -20,6 +22,10 @@ public class ResourceService {
 	public void loginFrameShow(){
 		loginFrameComponent.setVisible(true);
 	}
+	
+	public void loginFrameHide(){
+		loginFrameComponent.setVisible(false);
+	}
 
 	public String getNickName(){
 		return loginFrameComponent.getTextField().getText();
@@ -30,12 +36,20 @@ public class ResourceService {
 		userListFrameComponent.setVisible(true);
 	}
 	
+	public void userListFrameHide(){
+		userListFrameComponent.setVisible(false);
+	}
+	
 	public void addUser(String nickName){
 		userListFrameComponent.addUser(nickName);
 	}
 	
 	public void removeUser(String nickName){
 		userListFrameComponent.removeUser(nickName);
+	}
+	
+	public String getIndexNickName(Point point){
+		return userListFrameComponent.getIndex(point);
 	}
 	
 	

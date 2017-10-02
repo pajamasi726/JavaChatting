@@ -45,6 +45,9 @@ public class ProgramController implements NetworkInMsgListener{
 				// 자기자신 이름 추가
 				String nickName = resourceService.getNickName();
 				resourceService.addUser(nickName);
+				
+				// 로그인창 가리기
+				resourceService.loginFrameHide();
 			break;
 		
 			case SUCCESS :
