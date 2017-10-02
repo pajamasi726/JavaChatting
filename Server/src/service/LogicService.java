@@ -3,7 +3,10 @@ package service;
 import java.util.ArrayList;
 import java.util.List;
 
+import Util.MsgUtil;
 import model.Client;
+import protocol.Protocol;
+import protocol.ProtocolMsg;
 
 public class LogicService {
 	
@@ -26,6 +29,22 @@ public class LogicService {
 		}
 		
 		return true;
+	}
+	
+	public boolean sendNote(Client client, ProtocolMsg protocolMsg){
+		
+		// 1. 받는 사람찾기
+		for(Client user : userList){
+			
+			if(user.getNickName().equals(protocolMsg.getSubCode())){
+				// 쪽지 , 내용 , 보낸사람
+				String msg = MsgUtil.getProtocolEncoding(Protocol.NOTE, protocolMsg.getMsg(), client.getNickName());
+				user.msgToClient(msg);
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 	

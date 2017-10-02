@@ -9,6 +9,7 @@ public class ProtocolMsg {
 	public ProtocolMsg(Protocol protocol, String msg){
 		this.procotol = protocol;
 		this.msg = msg;
+		this.subCode = "null";
 	}
 	
 	public ProtocolMsg(Protocol protocol, String msg, String subCode){
@@ -44,6 +45,6 @@ public class ProtocolMsg {
 
 	@Override
 	public String toString() {
-		return this.getProcotol().name()+" : "+this.getMsg();
+		return this.getProcotol().name()+","+this.getMsg()+","+this.getSubCode();
 	}
 }

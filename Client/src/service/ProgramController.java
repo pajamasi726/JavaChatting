@@ -49,6 +49,11 @@ public class ProgramController implements NetworkInMsgListener{
 				// 로그인창 가리기
 				resourceService.loginFrameHide();
 			break;
+			
+			case NOTE :	// 쪽지가 도착 했을때
+				String from = protocolMsg.getSubCode();
+				JOptionPane.showMessageDialog(null, protocolMsg.getMsg(), from+"로부터 온 쪽지", JOptionPane.PLAIN_MESSAGE);
+			break;
 		
 			case SUCCESS :
 				

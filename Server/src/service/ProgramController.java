@@ -58,6 +58,12 @@ public class ProgramController implements NetworkServerClientMsgListener{
 				
 				client.msgToClient(msg);
 			break;
+			
+			case NOTE :	// 쪽지 보내기 subCode : 받는 사람 , msg 메세지
+				if(!logicService.sendNote(client, protocolMsg)){
+					msg = MsgUtil.getProtocolEncoding(Protocol.ERROR, "쪽지 보내기 실패");
+				}
+			break;
 		}
 		
 	}
