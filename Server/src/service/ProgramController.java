@@ -68,6 +68,14 @@ public class ProgramController implements NetworkServerClientMsgListener{
 					msg = MsgUtil.getProtocolEncoding(Protocol.ERROR, "쪽지 보내기 실패");
 				}
 			break;
+			
+			case REQUEST_CHAT :	// 채팅 시작 요청
+				logicService.requestChat(client, protocolMsg);
+			break;
+			
+			case MESSAGE_CHAT :	//	
+				logicService.messageChat(client, protocolMsg);
+			break;
 		}
 		
 	}

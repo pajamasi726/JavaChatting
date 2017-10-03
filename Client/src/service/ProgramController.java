@@ -1,20 +1,27 @@
 package service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 import Util.MsgUtil;
 import customInterface.NetworkInMsgListener;
+import model.ChatRoom;
 import protocol.ProtocolMsg;
+import resource.ChatFrameComponent;
 
 public class ProgramController implements NetworkInMsgListener{
 	
 	private ResourceService resourceService;
 	private ServerService serverService;
 	
+	private List<ChatRoom> roomList;
 	/** 모든 리소스 로딩 */
 	{
 		resourceService = ResourceService.getInstance();
 		serverService = ServerService.getInstance();
+		roomList = new ArrayList<>();
 	}
 	
 	
@@ -38,6 +45,8 @@ public class ProgramController implements NetworkInMsgListener{
 		
 		ProtocolMsg protocolMsg = MsgUtil.getProtocolDecoding(str);
 		
+		String roomName = "";
+		
 		switch(protocolMsg.getProcotol()){
 			
 			case NICK_NAME : // 닉네임이 정상적으로 성공하였을때
@@ -56,6 +65,26 @@ public class ProgramController implements NetworkInMsgListener{
 			
 			case USER_LIST :	// 사용자 리스트
 				resourceService.addUserList(protocolMsg.getMsg());
+			break;
+			
+			case START_CHAT :	// 채팅 시작
+				roomName = protocolMsg.getMsg();
+				ChatFrameComponent chatFrameComponent = new ChatFrameComponent(roomName);
+				ChatRoom chatRoom = new ChatRoom(roomName, chatFrameComponent);
+				chatFrameComponent.setVisible(true);
+				roomList.add(chatRoom);
+			break;
+			
+			case MESSAGE_CHAT :	// 채팅 메세지가 들어올때
+				String chatMsg = protocolMsg.getMsg();
+				roomName = protocolMsg.getSubCode();
+				
+				// 1.
+				for(ChatRoom room : roomList){
+					if(room.getRoomName().equals(roomName)){
+						room.getChatFrameComponent().addChatMsg(chatMsg);
+					}
+				}
 			break;
 			
 			

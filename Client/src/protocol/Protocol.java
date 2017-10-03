@@ -8,6 +8,11 @@ public enum Protocol {
 	NOTE("쪽지"),
 	NEW_USER("새로운사용자"),
 	USER_LIST("사용자리스트"),
+	
+	// 채팅
+	REQUEST_CHAT("채팅요청"),
+	START_CHAT("채팅시작"),
+	MESSAGE_CHAT("채팅메세지"),
 	;
 	
 	

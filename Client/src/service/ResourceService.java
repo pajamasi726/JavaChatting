@@ -57,6 +57,8 @@ public class ResourceService {
 	}
 	
 	
+	// 채팅 시작
+	
 	
 	
 	/** 싱글톤 적용 */

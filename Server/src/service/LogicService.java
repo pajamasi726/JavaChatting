@@ -1,10 +1,12 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import Util.MsgUtil;
+import model.ChatRoom;
 import model.Client;
 import protocol.Protocol;
 import protocol.ProtocolMsg;
@@ -13,7 +15,8 @@ public class LogicService {
 	
 	private static LogicService logicService;
 	
-	public static List<Client> userList = new ArrayList<>();
+	public static List<Client> userList = new ArrayList<>();	// 접속한 사용자 리스트
+	public static List<ChatRoom> roomList = new ArrayList<>();	// 채팅방 리스트
 
 	/** 서버에 사용자 추가 */
 	public void addUser(Client client){
@@ -75,6 +78,52 @@ public class LogicService {
 			}
 		}
 		
+		return false;
+	}
+	
+	/** 채팅 요청 */
+	public boolean requestChat(Client client, ProtocolMsg protocolMsg){
+		
+		// 1. 채팅을 시작할 사용자 찾기
+		for(Client user : userList){
+			
+			if(user.getNickName().equals(protocolMsg.getMsg())){
+				// [Protocol.CHAT_START] , [채팅 방이름 유일한 값]
+				String chatRoomName = new Date().toString();
+				String msg = MsgUtil.getProtocolEncoding(Protocol.START_CHAT, chatRoomName);
+				
+				// 사용자와 참여하는 사람에게 알리기
+				client.msgToClient(msg);
+				user.msgToClient(msg);
+				
+				// 채팅 방생성해서 사용자 저장
+				ChatRoom chatRoom = new ChatRoom(chatRoomName);
+				chatRoom.addUser(user);
+				chatRoom.addUser(client);
+				
+				roomList.add(chatRoom);
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	/** 채팅 메세지 전달 */
+	public boolean messageChat(Client client, ProtocolMsg protocolMsg){
+		String roomName = protocolMsg.getSubCode();
+		String chatMsg = protocolMsg.getMsg();
+		
+		// 1. 채팅방 찾기
+		for(ChatRoom chatRoom : roomList){
+			
+			if(chatRoom.getRoomName().equals(roomName)){
+				// 전체 사용자에게 전송
+				String msg = MsgUtil.getProtocolEncoding(Protocol.MESSAGE_CHAT, chatMsg, roomName);
+				chatRoom.broadCast(msg);
+				return true;
+			}
+		}
 		return false;
 	}
 

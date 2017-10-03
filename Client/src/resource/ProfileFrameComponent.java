@@ -21,8 +21,12 @@ public class ProfileFrameComponent extends JFrame implements ActionListener{
 	private JPanel contentPane;
 	private JTextField msgTextField;
 	private JLabel nickNameLabel;
+	private ServerService serverService;
 	
 	public ProfileFrameComponent(String nickName){
+		
+		serverService = ServerService.getInstance();
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 240, 242);
 		contentPane = new JPanel();
@@ -69,13 +73,23 @@ public class ProfileFrameComponent extends JFrame implements ActionListener{
 		
 		ServerService serverService = ServerService.getInstance();
 		
+		String nickName = "";
+		String note = "";
+		String msg = "";
 		switch(e.getActionCommand()){
 			case "쪽지" :
-				String nickName = nickNameLabel.getText();
-				String note = msgTextField.getText();
-				String msg = MsgUtil.getProtocolEncoding(Protocol.NOTE, note, nickName);
+				nickName = nickNameLabel.getText();
+				note = msgTextField.getText();
+				msg = MsgUtil.getProtocolEncoding(Protocol.NOTE, note, nickName);
 				serverService.sendMsg(msg);
 			break;
+			
+			case "대화" : // 대화 요청 [protocol] [받는사람]
+				nickName = nickNameLabel.getText();
+				msg = MsgUtil.getProtocolEncoding(Protocol.REQUEST_CHAT, nickName);
+				serverService.sendMsg(msg);
+			break;
+			
 		}
 		
 	}
