@@ -21,16 +21,12 @@ public class ButtonEventListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("button click event : "+e.getActionCommand());
-
 		String command = e.getActionCommand();
 		switch(command){
 		
 			case "접속":
-				// id 받아오기
 				String nickName = resourceService.getNickName();
-				nickName = nickName.replaceAll(" ", "").trim();
-				String msg = MsgUtil.getProtocolEncoding(Protocol.NICK_NAME, nickName);
-				serverService.sendMsg(msg);
+				serverService.outBountMsg(Protocol.NICK_NAME, nickName);
 			break;
 		}
 	}

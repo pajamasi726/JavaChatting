@@ -9,6 +9,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import customInterface.NetworkInMsgListener;
+import protocol.Protocol;
 import resource.AppConfig;
 
 public class ServerService {
@@ -107,6 +108,9 @@ public class ServerService {
 		inputThread.start();
 	}
 	
+	public void outBountMsg(Protocol protocol, Object object){
+		networkInMsgListener.outBoundMsg(protocol, object);
+	}
 	
 	
 	/** SingleTon적용 */

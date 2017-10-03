@@ -1,8 +1,13 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import resource.ChatFrameComponent;
 
 public class ChatRoom {
+	
+	public static List<ChatRoom> roomList = new ArrayList<>();
 	
 	private String roomName;		// date toString()
 	private ChatFrameComponent chatFrameComponent;
